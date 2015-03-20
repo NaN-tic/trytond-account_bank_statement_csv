@@ -1,7 +1,5 @@
 # The COPYRIGHT file at the top level of this repository contains the full
 # copyright notices and license terms.
-from StringIO import StringIO
-from csv import reader
 from datetime import datetime
 from trytond.model import ModelView, fields
 from trytond.pool import Pool, PoolMeta
@@ -127,21 +125,6 @@ class AccountBankStatementCSVImport(Wizard):
                     'is not draft state.',
                 })
 
-    @staticmethod
-    def _read_csv_file(csv_profile, import_file):
-        '''Read CSV data'''
-        separator = csv_profile.separator
-        if separator == "tab":
-            separator = '\t'
-        quote = csv_profile.quote
-
-        data = StringIO(import_file)
-        if quote:
-            rows = reader(data, delimiter=str(separator), quotechar=str(quote))
-        else:
-            rows = reader(data, delimiter=str(separator))
-        return rows
-
     def transition_import_file(self):
         pool = Pool()
         BankStatement = pool.get('account.bank.statement')
@@ -165,7 +148,7 @@ class AccountBankStatementCSVImport(Wizard):
             self.raise_user_error('statement_not_draft',
                 (statement.rec_name,))
 
-        data = self._read_csv_file(csv_profile, import_file)
+        data = csv_profile.read_csv_file(import_file)
 
         if has_header:
             next(data, None)
