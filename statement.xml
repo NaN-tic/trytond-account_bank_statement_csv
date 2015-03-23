@@ -6,39 +6,39 @@ copyright notices and license terms. -->
 
         <!-- import csv start -->
         <record model="ir.ui.view" id="import_csv_start_view_form">
-            <field name="model">account.bank.statement.csv.import.start</field>
+            <field name="model">account.bank.statement.import.csv.start</field>
             <field name="type">form</field>
             <field name="name">import_csv_start_view_form</field>
         </record>
 
-        <record model="ir.action.wizard" id="act_account_bank_statement_csv_import">
+        <record model="ir.action.wizard" id="act_account_bank_statement_import_csv">
             <field name="name">Import CSV</field>
-            <field name="wiz_name">account.bank.statement.csv.import</field>
+            <field name="wiz_name">account.bank.statement.import.csv</field>
             <field name="model">account.bank.statement</field>
         </record>
-        <record model="ir.action.keyword" id="account_bank_statement_csv_import_keyword">
+        <record model="ir.action.keyword" id="account_bank_statement_import_csv_keyword">
             <field name="keyword">form_action</field>
             <field name="model">account.bank.statement,-1</field>
-            <field name="action" ref="act_account_bank_statement_csv_import"/>
+            <field name="action" ref="act_account_bank_statement_import_csv"/>
         </record>
 
         <!-- account.bank.statement -->
-        <record model="ir.action.keyword" id="act_account_bank_statement_csv_profile_logs_keyword">
+        <record model="ir.action.keyword" id="act_account_bank_statement_profile_csv_logs_keyword">
             <field name="keyword">form_relate</field>
             <field name="model">account.bank.statement,-1</field>
-            <field name="action" ref="import_csv.act_csv_imported_logs"/>
+            <field name="action" ref="import_csv.act_imported_csv_logs"/>
         </record>
 
         <!-- Access -->
         <record model="ir.model.access" id="access_account_bank_statement_csv">
-            <field name="model" search="[('model', '=', 'csv.profile')]"/>
+            <field name="model" search="[('model', '=', 'profile.csv')]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_account_bank_statement_csv_admin">
-            <field name="model" search="[('model', '=', 'csv.profile')]"/>
+            <field name="model" search="[('model', '=', 'profile.csv')]"/>
             <field name="group" ref="account_bank_statement.group_account_bank_statement_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -47,14 +47,14 @@ copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_account_bank_statement_csv_column">
-            <field name="model" search="[('model', '=', 'csv.profile')]"/>
+            <field name="model" search="[('model', '=', 'profile.csv')]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_account_bank_statement_csv_column_admin">
-            <field name="model" search="[('model', '=', 'csv.profile')]"/>
+            <field name="model" search="[('model', '=', 'profile.csv')]"/>
             <field name="group" ref="account_bank_statement.group_account_bank_statement_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

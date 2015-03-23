@@ -6,9 +6,9 @@ from .statement import *
 
 def register():
     Pool.register(
-        CSVProfile,
-        AccountBankStatementCSVImportStart,
+        ProfileCSV,
+        AccountBankStatementImportCSVStart,
         module='account_bank_statement_csv', type_='model')
     Pool.register(
-        AccountBankStatementCSVImport,
+        AccountBankStatementImportCSV,
         module='account_bank_statement_csv', type_='wizard')

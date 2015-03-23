@@ -7,17 +7,17 @@ from trytond.transaction import Transaction
 from trytond.wizard import Button, StateTransition, StateView, Wizard
 
 
-__all__ = ['CSVProfile', 'AccountBankStatementCSVImportStart',
-    'AccountBankStatementCSVImport']
+__all__ = ['ProfileCSV', 'AccountBankStatementImportCSVStart',
+    'AccountBankStatementImportCSV']
 __metaclass__ = PoolMeta
 
 
-class CSVProfile():
-    __name__ = 'csv.profile'
+class ProfileCSV():
+    __name__ = 'profile.csv'
 
     @classmethod
     def __setup__(cls):
-        super(CSVProfile, cls).__setup__()
+        super(ProfileCSV, cls).__setup__()
         cls._error_messages.update({
                 'required_fields':
                     'Fields %s are required.',
@@ -25,7 +25,7 @@ class CSVProfile():
 
     @classmethod
     def validate(cls, records):
-        super(CSVProfile, cls).validate(records)
+        super(ProfileCSV, cls).validate(records)
         cls.check_required(records)
 
     @classmethod
@@ -43,10 +43,10 @@ class CSVProfile():
                     error_args=(required_fields))
 
 
-class AccountBankStatementCSVImportStart(ModelView):
-    'Account Bank Statement CSV Import start'
-    __name__ = 'account.bank.statement.csv.import.start'
-    csv_profile = fields.Many2One('csv.profile', 'CSV',
+class AccountBankStatementImportCSVStart(ModelView):
+    'Account Bank Statement Import CSV start'
+    __name__ = 'account.bank.statement.import.csv.start'
+    profile_csv = fields.Many2One('profile.csv', 'CSV',
         required=True)
     import_file = fields.Binary('Import File', required=True)
     header = fields.Boolean('Headers',
@@ -63,11 +63,13 @@ class AccountBankStatementCSVImportStart(ModelView):
         help='If any line of the csv file is already imported, skip it.')
 
     @classmethod
-    def default_csv_profile(cls):
-        CSVProfile = Pool().get('csv.profile')
-        csv_profiles = CSVProfile.search([])
-        if len(csv_profiles) == 1:
-            return csv_profiles[0].id
+    def default_profile_csv(cls):
+        ProfileCSV = Pool().get('profile.csv')
+        profile_csvs = ProfileCSV.search([
+            ('model.model', '=', 'account.bank.statement.line'),
+            ])
+        if len(profile_csvs) == 1:
+            return profile_csvs[0].id
 
     @classmethod
     def default_header(cls):
@@ -83,26 +85,26 @@ class AccountBankStatementCSVImportStart(ModelView):
 
     @classmethod
     def default_character_encoding(cls):
-        CSVProfile = Pool().get('csv.profile')
-        csv_profiles = CSVProfile.search([])
-        if len(csv_profiles) == 1:
-            return csv_profiles[0].character_encoding
+        ProfileCSV = Pool().get('profile.csv')
+        profile_csvs = ProfileCSV.search([])
+        if len(profile_csvs) == 1:
+            return profile_csvs[0].character_encoding
         return 'utf-8'
 
-    @fields.depends('csv_profile')
-    def on_change_csv_profile(self):
+    @fields.depends('profile_csv')
+    def on_change_profile_csv(self):
         changes = {}
-        if self.csv_profile:
+        if self.profile_csv:
             changes['character_encoding'] = (
-                self.csv_profile.character_encoding)
+                self.profile_csv.character_encoding)
         return changes
 
 
-class AccountBankStatementCSVImport(Wizard):
-    'Account Bank Statement CSV Import'
-    __name__ = 'account.bank.statement.csv.import'
-    start = StateView('account.bank.statement.csv.import.start',
-        'account_bank_statement_csv.import_csv_start_view_form', [
+class AccountBankStatementImportCSV(Wizard):
+    'Account Bank Statement Import CSV'
+    __name__ = 'account.bank.statement.import.csv'
+    start = StateView('account.bank.statement.import.csv.start',
+        'account_bank_statement_import.csv_csv_start_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('Import File', 'import_file', 'tryton-ok', default=True),
             ])
@@ -110,7 +112,7 @@ class AccountBankStatementCSVImport(Wizard):
 
     @classmethod
     def __setup__(cls):
-        super(AccountBankStatementCSVImport, cls).__setup__()
+        super(AccountBankStatementImportCSV, cls).__setup__()
         cls._error_messages.update({
                 'general_failure': 'Please, check that the CSV file is '
                     'effectively a CSV file.',
@@ -134,7 +136,7 @@ class AccountBankStatementCSVImport(Wizard):
         context = Transaction().context
 
         company = context.get('company')
-        csv_profile = self.start.csv_profile
+        profile_csv = self.start.profile_csv
         import_file = self.start.import_file
         has_header = self.start.header
         has_attachment = self.start.attachment
@@ -149,7 +151,7 @@ class AccountBankStatementCSVImport(Wizard):
             self.raise_user_error('statement_not_draft',
                 (statement.rec_name,))
 
-        data = csv_profile.read_csv_file(import_file)
+        data = profile_csv.read_csv_file(import_file)
 
         if has_header:
             next(data, None)
@@ -160,7 +162,7 @@ class AccountBankStatementCSVImport(Wizard):
                 continue
             values = {}
             domain = []
-            for column in csv_profile.columns:
+            for column in profile_csv.columns:
                 cells = column.column.split(',')
                 try:
                     value = ','.join(row[int(c)] for c in cells)
