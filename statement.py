@@ -104,7 +104,8 @@ class AccountBankStatementImportCSV(Wizard):
     'Account Bank Statement Import CSV'
     __name__ = 'account.bank.statement.import.csv'
     start = StateView('account.bank.statement.import.csv.start',
-        'account_bank_statement_import.csv_csv_start_view_form', [
+        'account_bank_statement_csv.'
+        'account_bank_statement_import_csv_keyword', [
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('Import File', 'import_file', 'tryton-ok', default=True),
             ])
