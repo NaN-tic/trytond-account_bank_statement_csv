@@ -22,7 +22,6 @@ class CSVProfile():
                 'required_fields':
                     'Fields %s are required.',
                 })
-        cls.model.domain.extend(('model', '=', 'account.bank.statement.line'))
 
     @classmethod
     def validate(cls, records):
@@ -32,6 +31,8 @@ class CSVProfile():
     @classmethod
     def check_required(cls, records):
         for record in records:
+            if record.model.model != 'account.bank.statement.line':
+                continue
             required_fields = ['date', 'description', 'amount']
             for column in record.columns:
                 field = column.field.name
