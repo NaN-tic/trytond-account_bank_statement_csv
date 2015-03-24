@@ -5,7 +5,7 @@ copyright notices and license terms. -->
     <data>
 
         <!-- import csv start -->
-        <record model="ir.ui.view" id="import_csv_start_view_form">
+        <record model="ir.ui.view" id="account_bank_statement_import_csv_start">
             <field name="model">account.bank.statement.import.csv.start</field>
             <field name="type">form</field>
             <field name="name">import_csv_start_view_form</field>
