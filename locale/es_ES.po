@@ -1,0 +1,114 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.bank.statement.import.csv:"
+msgid ""
+"Database general failure.\n"
+"Error raised: %s."
+msgstr ""
+"Fallo general en la base de datos.\n"
+"Error: %s."
+
+msgctxt "error:account.bank.statement.import.csv:"
+msgid "Please, check that the CSV file is effectively a CSV file."
+msgstr ""
+"Por favor, compruebe que el archivo CSV es efectivamente un archivo CSV."
+
+msgctxt "error:account.bank.statement.import.csv:"
+msgid ""
+"Please, check that the Statement CSV configuration matches with the format "
+"of the CSV file."
+msgstr ""
+"Por favor, compruebe que la configuración del extracto CSV coincide con el "
+"formato del archivo CSV."
+
+msgctxt "error:account.bank.statement.import.csv:"
+msgid "You cannot import a CSV statement because \"%s\" have lines."
+msgstr "No puede importar extractos CSV porque \"%s\" tiene líneas."
+
+msgctxt "error:account.bank.statement.import.csv:"
+msgid "You cannot import a CSV statement because \"%s\" is not draft state."
+msgstr "No puede importar extractos CSV porque \"%s\" no está en estado borrador."
+
+msgctxt "error:profile.csv:"
+msgid "Fields %s are required."
+msgstr "Los campos %s son obligatorios."
+
+msgctxt "field:account.bank.statement.import.csv.start,attachment:"
+msgid "Attachment"
+msgstr "Adjunto"
+
+msgctxt "field:account.bank.statement.import.csv.start,character_encoding:"
+msgid "Character Encoding"
+msgstr "Codificación de caracteres."
+
+msgctxt "field:account.bank.statement.import.csv.start,confirm:"
+msgid "Confirm"
+msgstr "Confirmar"
+
+msgctxt "field:account.bank.statement.import.csv.start,header:"
+msgid "Headers"
+msgstr "Cabeceras"
+
+msgctxt "field:account.bank.statement.import.csv.start,id:"
+msgid "ID"
+msgstr "Identificador"
+
+msgctxt "field:account.bank.statement.import.csv.start,import_file:"
+msgid "Import File"
+msgstr "Importar archivo"
+
+msgctxt "field:account.bank.statement.import.csv.start,profile_csv:"
+msgid "CSV"
+msgstr "CSV"
+
+msgctxt "field:account.bank.statement.import.csv.start,skip_repeated:"
+msgid "Skip Repeated"
+msgstr "Omitir repetidos"
+
+msgctxt "help:account.bank.statement.import.csv.start,attachment:"
+msgid "Attach CSV file after import."
+msgstr "Adjunta archivo CSV tras la importación."
+
+msgctxt "help:account.bank.statement.import.csv.start,confirm:"
+msgid "Confirm Bank Statement after import."
+msgstr "Confirmar el extracto bancario tras la importación."
+
+msgctxt "help:account.bank.statement.import.csv.start,header:"
+msgid "Set this check box to true if CSV file has headers."
+msgstr "Marque esta casilla si el archivo CSV tiene cabeceras."
+
+msgctxt "help:account.bank.statement.import.csv.start,skip_repeated:"
+msgid "If any line of the csv file is already imported, skip it."
+msgstr "Si una línea del archivo csv ya está importada, omitir."
+
+msgctxt "model:account.bank.statement.import.csv.start,name:"
+msgid "Account Bank Statement Import CSV start"
+msgstr "Inicio de importación CSV de extracto bancario"
+
+msgctxt "model:ir.action,name:act_account_bank_statement_import_csv"
+msgid "Import CSV"
+msgstr "Importar CSV"
+
+msgctxt ""
+"selection:account.bank.statement.import.csv.start,character_encoding:"
+msgid "Latin-1"
+msgstr "Latín-1"
+
+msgctxt ""
+"selection:account.bank.statement.import.csv.start,character_encoding:"
+msgid "UTF-8"
+msgstr "UTF-8"
+
+msgctxt "view:account.bank.statement.import.csv.start:"
+msgid "Import CSV File"
+msgstr "Importar archivo CSV"
+
+msgctxt "wizard_button:account.bank.statement.import.csv,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:account.bank.statement.import.csv,start,import_file:"
+msgid "Import File"
+msgstr "Importar archivo"
