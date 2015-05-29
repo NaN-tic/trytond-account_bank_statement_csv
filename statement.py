@@ -166,10 +166,10 @@ class AccountBankStatementImportCSV(Wizard):
             for column in profile_csv.columns:
                 cells = column.column.split(',')
                 try:
-                    value = ','.join(row[int(c)] for c in cells)
+                    vals = [row[int(c)] for c in cells]
                 except IndexError:
                     self.raise_user_error('csv_format_error')
-                values[column.field.name] = column.get_value(value)
+                values[column.field.name] = column.get_value(vals)
                 domain.append(
                     (column.field.name, '=', values[column.field.name])
                     )
