@@ -93,11 +93,9 @@ class AccountBankStatementImportCSVStart(ModelView):
 
     @fields.depends('profile_csv')
     def on_change_profile_csv(self):
-        changes = {}
         if self.profile_csv:
-            changes['character_encoding'] = (
+            self.character_encoding = (
                 self.profile_csv.character_encoding)
-        return changes
 
 
 class AccountBankStatementImportCSV(Wizard):
