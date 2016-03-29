@@ -9,10 +9,10 @@ from trytond.wizard import Button, StateTransition, StateView, Wizard
 
 __all__ = ['ProfileCSV', 'AccountBankStatementImportCSVStart',
     'AccountBankStatementImportCSV']
-__metaclass__ = PoolMeta
 
 
-class ProfileCSV():
+class ProfileCSV:
+    __metaclass__ = PoolMeta
     __name__ = 'profile.csv'
 
     @classmethod
