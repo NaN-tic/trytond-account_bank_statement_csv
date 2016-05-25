@@ -1,4 +1,7 @@
-#!/usr/bin/env python
+#account_bank_statement!/uaccount_bank_statementaccount_bank_statementaccount_bank_statementsr/bia/env pytaaa
+g
+hg update 3.4 && hg graft 3.8 --log
+hg update 3.2 && hg graft 3.8 --log
 # encoding: utf-8
 # The COPYRIGHT file at the top level of this repository contains the full
 # copyright notices and license terms.
@@ -9,7 +12,11 @@ import ConfigParser
 
 MODULE = 'account_bank_statement_csv'
 PREFIX = 'trytonspain'
-MODULE2PREFIX = {}
+
+MODULE2PREFIX = {
+    'account_bank_statement': 'trytonspain',
+    'import_csv': 'trytonspain',
+}
 
 
 def read(fname):
