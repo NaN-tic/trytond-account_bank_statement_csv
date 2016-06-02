@@ -22,13 +22,6 @@ copyright notices and license terms. -->
             <field name="action" ref="act_account_bank_statement_import_csv"/>
         </record>
 
-        <!-- account.bank.statement -->
-        <record model="ir.action.keyword" id="act_account_bank_statement_profile_csv_logs_keyword">
-            <field name="keyword">form_relate</field>
-            <field name="model">account.bank.statement,-1</field>
-            <field name="action" ref="import_csv.act_imported_csv_logs"/>
-        </record>
-
         <!-- Access -->
         <record model="ir.model.access" id="access_account_bank_statement_csv">
             <field name="model" search="[('model', '=', 'profile.csv')]"/>
