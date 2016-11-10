@@ -52,7 +52,7 @@ msgstr "Encapçalaments"
 
 msgctxt "field:account.bank.statement.import.csv.start,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "Identificador"
 
 msgctxt "field:account.bank.statement.import.csv.start,import_file:"
 msgid "Import File"
