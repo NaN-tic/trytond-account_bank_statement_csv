@@ -24,14 +24,14 @@ copyright notices and license terms. -->
 
         <!-- Access -->
         <record model="ir.model.access" id="access_account_bank_statement_csv">
-            <field name="model" search="[('model', '=', 'profile.csv')]"/>
+            <field name="model" search="[('model', '=', 'import.csv')]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_account_bank_statement_csv_admin">
-            <field name="model" search="[('model', '=', 'profile.csv')]"/>
+            <field name="model" search="[('model', '=', 'import.csv')]"/>
             <field name="group" ref="account_bank_statement.group_account_bank_statement_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -40,14 +40,14 @@ copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.access" id="access_account_bank_statement_csv_column">
-            <field name="model" search="[('model', '=', 'profile.csv')]"/>
+            <field name="model" search="[('model', '=', 'import.csv')]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_account_bank_statement_csv_column_admin">
-            <field name="model" search="[('model', '=', 'profile.csv')]"/>
+            <field name="model" search="[('model', '=', 'import.csv')]"/>
             <field name="group" ref="account_bank_statement.group_account_bank_statement_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>

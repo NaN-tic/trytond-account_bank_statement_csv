@@ -13,7 +13,7 @@ __all__ = ['ProfileCSV', 'AccountBankStatementImportCSVStart',
 
 class ProfileCSV:
     __metaclass__ = PoolMeta
-    __name__ = 'profile.csv'
+    __name__ = 'import.csv'
 
     @classmethod
     def __setup__(cls):
@@ -46,7 +46,7 @@ class ProfileCSV:
 class AccountBankStatementImportCSVStart(ModelView):
     'Account Bank Statement Import CSV start'
     __name__ = 'account.bank.statement.import.csv.start'
-    profile_csv = fields.Many2One('profile.csv', 'CSV',
+    profile_csv = fields.Many2One('import.csv', 'CSV',
         required=True)
     import_file = fields.Binary('Import File', required=True)
     header = fields.Boolean('Headers',
@@ -64,7 +64,7 @@ class AccountBankStatementImportCSVStart(ModelView):
 
     @classmethod
     def default_profile_csv(cls):
-        ProfileCSV = Pool().get('profile.csv')
+        ProfileCSV = Pool().get('import.csv')
         profile_csvs = ProfileCSV.search([
             ('model.model', '=', 'account.bank.statement.line'),
             ])
@@ -85,7 +85,7 @@ class AccountBankStatementImportCSVStart(ModelView):
 
     @classmethod
     def default_character_encoding(cls):
-        ProfileCSV = Pool().get('profile.csv')
+        ProfileCSV = Pool().get('import.csv')
         profile_csvs = ProfileCSV.search([])
         if len(profile_csvs) == 1:
             return profile_csvs[0].character_encoding
